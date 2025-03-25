@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createTodo } from "../services/todo.service";
 
-const TodoCreator = () => {
+const TodoCreator = ({ handleAdd }) => {
   const [title, setTitle] = useState("");
 
   const handleSubmit = async (event) => {
@@ -11,7 +11,8 @@ const TodoCreator = () => {
     if (error) {
       alert(message);
     } else {
-      console.log(todo);
+      setTitle("");
+      handleAdd(todo);
     }
   };
 

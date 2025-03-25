@@ -1,16 +1,23 @@
 import api from "./api";
 
 const getAllTodos = async () => {
-  // try {
-  // } catch (error) {
-  //     console.error(error);
-  //     return {
-  //         message: "Error al obtener los todos",
-  //         error,
-  //     };
-  // }
+  try {
+    const { data } = await api.get("/todos");
+    return {
+      error: null,
+      message: "Todos obtenidos correctamente",
+      ...data,
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      message: "Error al obtener los todos",
+      error,
+    };
+  }
 };
 const getTodoById = async () => {};
+
 const createTodo = async (title) => {
   try {
     const { data } = await api.post("/todos", {
@@ -30,7 +37,39 @@ const createTodo = async (title) => {
     };
   }
 };
-const updateTodoById = async () => {};
-const deleteTodoById = async () => {};
+const checkTodo = async (todoId, done) => {
+  try {
+    const { data } = await api.put(`/todos/${todoId}`, {
+      done,
+    });
+    return {
+      error: null,
+      message: "Todo actualizado correctamente",
+      ...data,
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      message: "Error al actualizar el todo",
+      error,
+    };
+  }
+};
 
-export { getAllTodos, getTodoById, createTodo, updateTodoById, deleteTodoById };
+const deleteTodoById = async (idTodo) => {
+  try {
+    await api.delete(`/todos/${idTodo}`);
+    return {
+      error: null,
+      message: "Todo eliminado correctamente",
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      message: "Error al eliminar el todo",
+      error,
+    };
+  }
+};
+
+export { getAllTodos, getTodoById, createTodo, checkTodo, deleteTodoById };

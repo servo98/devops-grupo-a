@@ -6,7 +6,7 @@ import Todo from "../models/Todo.js";
  */
 const getAllTodos = async (req, res) => {
   try {
-    const todos = await Todo.find();
+    const todos = await Todo.find().select("-__v");
 
     res.json({
       todos,
