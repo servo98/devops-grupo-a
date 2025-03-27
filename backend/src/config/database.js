@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import config from "./index.js";
 
 mongoose.connection.on("open", () => {
-  console.log("DB Connected");
+  console.log("DB Connected 🟢");
 });
 
 mongoose.connection.on("error", (error) => {
