@@ -10,7 +10,7 @@ mongoose.connection.on("error", (error) => {
 });
 
 mongoose.connection.on("disconnected", () => {
-  console.log("DB Disconnected");
+  console.log("DB Disconnected 🔴");
 });
 
 const connectDB = async () => {
