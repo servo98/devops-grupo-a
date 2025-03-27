@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon server.js",
-    "lint": "eslint .",
-    "prepare": "husky"
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
@@ -22,7 +21,6 @@
     "dotenv": "^16.4.7",
     "eslint": "^9.23.0",
     "globals": "^16.0.0",
-    "husky": "^9.1.7",
     "nodemon": "^3.1.9"
   }
 }

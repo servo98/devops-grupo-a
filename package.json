@@ -1,0 +1,22 @@
+{
+  "name": "devops-project",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/servo98/devops-grupo-a.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/servo98/devops-grupo-a/issues"
+  },
+  "homepage": "https://github.com/servo98/devops-grupo-a#readme",
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
+}

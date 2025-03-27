@@ -9,8 +9,8 @@ const Todo = ({
     showSaveButton();
   };
 
-  const handleChangeInput = (e) => {
-    const { value } = e.target;
+  const handleChangeInput = () => {
+    // const { value } = e.target;
     // changeValue
   };
 

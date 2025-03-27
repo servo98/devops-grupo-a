@@ -1,7 +1,5 @@
 import dotenv from "dotenv";
 
-const hola = "mundo";
-
 dotenv.config();
 
 const config = {
