@@ -16,7 +16,7 @@ api.use(express.json());
 
 api.get("/", (req, res) => {
   res.json({
-    mesage: "API Live!",
+    mesage: "API Live! 🐳",
   });
 });
 
