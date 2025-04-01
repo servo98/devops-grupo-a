@@ -3,7 +3,7 @@
 # 2 Qué va a hacer:
 #     Ejecutar el lint (test)
 
-name: CI Monorepo
+name: Frontend-Check
 
 on:
   pull_request:

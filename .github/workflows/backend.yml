@@ -1,0 +1,51 @@
+name: Back-Check
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths: "backend/**"
+
+jobs:
+  backend-lint:
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - name: Configurando Git
+        uses: actions/checkout@v4
+
+      - name: Configurando NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.14.0"
+
+      - name: Instalando dependencias
+        run: npm ci
+
+      - name: Ejecutando ESLint
+        run: npm run lint
+
+  backend-test:
+    runs-on: ubuntu-20.04
+    needs: backend-lint
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - name: Configurando Git
+        uses: actions/checkout@v4
+
+      - name: Configurando NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.14.0"
+
+      - name: Instalando dependencias
+        run: npm ci
+
+      - name: Ejecutando ESLint
+        run: npm run test
