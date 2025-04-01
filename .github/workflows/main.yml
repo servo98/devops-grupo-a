@@ -1,0 +1,29 @@
+# 1 Cuándo?:
+#      Cuando se haga un pull request hacia main
+# 2 Qué va a hacer:
+#     Ejecutar el lint (test)
+
+name: CI Monorepo
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  frontend-lint:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Configurando git
+        uses: actions/checkout@v4
+
+      - name: Configurando NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.14.0"
+
+      - name: Instalando dependencias
+        run: npm npm ci
+
+      - name: Ejecutando ESLint
+        run: npm run lint
