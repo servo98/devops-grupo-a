@@ -23,7 +23,7 @@ jobs:
           node-version: "22.14.0"
 
       - name: Instalando dependencias
-        run: npm npm ci
+        run: npm ci
 
       - name: Ejecutando ESLint
         run: npm run lint
