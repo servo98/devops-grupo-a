@@ -3,7 +3,6 @@ import { createTodo } from "../services/todo.service";
 
 const TodoCreator = ({ handleAdd }) => {
   const [title, setTitle] = useState("");
-  const mensaje = "Hola Mundo";
   const handleSubmit = async (event) => {
     event.preventDefault();
     const { error, message, todo } = await createTodo(title);
