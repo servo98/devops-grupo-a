@@ -32,7 +32,26 @@ describe("POST /api/todos", () => {
     expect(response.statusCode).toBe(200);
   });
 
-  /**
-   * Crear un test llamado Get all todos y verificar que te regrese un statuscode 200
-   */
+  test("Obtener TODOS", async () => {
+    const response = await request.get("/api/todos").send();
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toHaveProperty("todos");
+    expect(response.body.todos).toBeInstanceOf(Array);
+    expect(response.body.todos.length).toBe(0);
+    await request.post("/api/todos").send({
+      title: "TODO TEST TITLE",
+    });
+    const response2 = await request.get("/api/todos").send();
+    expect(response2.statusCode).toBe(200);
+    expect(response2.body).toHaveProperty("todos");
+    expect(response2.body.todos).toBeInstanceOf(Array);
+    expect(response2.body.todos.length).toBe(1);
+    expect(response2.body.todos[0]).toHaveProperty("_id");
+    expect(response2.body.todos[0]).toHaveProperty("title");
+    expect(response2.body.todos[0]).toHaveProperty("done");
+    expect(response2.body.todos[0].title).toBe("TODO TEST TITLE");
+    expect(response2.body.todos[0].done).toBe(false);
+
+  }
+)
 });
