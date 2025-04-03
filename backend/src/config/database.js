@@ -14,6 +14,8 @@ mongoose.connection.on("disconnected", () => {
 });
 
 const connectDB = async () => {
+  console.info("conectando a la base con uri", config.MONGO_URI);
+
   await mongoose.connect(config.MONGO_URI);
 };
 
