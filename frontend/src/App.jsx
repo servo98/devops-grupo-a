@@ -40,6 +40,8 @@ function App() {
 
   return (
     <>
+      <h1>Esto es una lista de cosas v4</h1>
+      <h2>esto es un subtítulo</h2>
       <TodoList
         todos={todos}
         handleDelete={handleDelete}
