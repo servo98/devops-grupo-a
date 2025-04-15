@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import todoRouter from "./routes/todo.route.js";
 import { globalLogger } from "./utils/logger.js";
+import errorHandler from "./utils/errorHandler.js";
 // import morgan from "morgan";
 
 const api = express();
@@ -25,5 +26,8 @@ api.get("/", (req, res) => {
 });
 
 api.use("/api/todos", todoRouter);
+
+// Registrar error handler
+api.use(errorHandler);
 
 export default api;

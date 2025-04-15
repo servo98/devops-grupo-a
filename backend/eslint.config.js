@@ -11,6 +11,9 @@ export default defineConfig([
     extends: ["js/recommended"],
   },
   {
+    rules: {
+      "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+    },
     ignores: ["test/*/**"],
   },
 ]);

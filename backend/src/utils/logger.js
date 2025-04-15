@@ -7,6 +7,12 @@ const logger = winston.createLogger({
     new winston.transports.File({
       filename: "logs/requests.log",
     }),
+    new winston.transports.Http({
+      host: "localhost",
+      port: "5044",
+      path: "/",
+      format: winston.format.json(),
+    }),
   ],
 });
 

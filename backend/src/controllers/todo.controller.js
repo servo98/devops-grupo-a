@@ -1,4 +1,5 @@
 import Todo from "../models/Todo.js";
+import { ERRORS } from "../utils/CustomError.js";
 
 /**
  * @param {import("express").Request} req
@@ -25,20 +26,12 @@ const getAllTodos = async (req, res) => {
  * @param {import("express").Response} res
  */
 const createTodo = async (req, res) => {
-  try {
-    const newTodo = await Todo.create({
-      title: req.body.title,
-    });
-    res.json({
-      todo: newTodo,
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      message: "Error al crear el todo",
-      error,
-    });
-  }
+  const newTodo = await Todo.create({
+    title: req.body.title,
+  });
+  res.json({
+    todo: newTodo,
+  });
 };
 
 /**
@@ -72,27 +65,23 @@ const getTodoById = async (req, res) => {
  * @param {import("express").Response} res
  */
 const updateTodoById = async (req, res) => {
-  try {
-    const { idTodo } = req.params;
-    const todoUpdated = await Todo.findByIdAndUpdate(
-      idTodo,
-      {
-        done: req.body.done,
-        title: req.body.title,
-      },
-      { new: true }
-    );
+  const { idTodo } = req.params;
+  const todoUpdated = await Todo.findByIdAndUpdate(
+    idTodo,
+    {
+      done: req.body.done,
+      title: req.body.title,
+    },
+    { new: true }
+  );
 
-    res.json({
-      todo: todoUpdated,
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      message: "Error al actualizar el todo",
-      error,
-    });
+  if (!todoUpdated) {
+    throw ERRORS.NOT_FOUND;
   }
+
+  res.json({
+    todo: todoUpdated,
+  });
 };
 
 /**
@@ -102,10 +91,7 @@ const updateTodoById = async (req, res) => {
 const deleteTodoById = async (req, res) => {
   try {
     const { idTodo } = req.params;
-    await Todo.findByIdAndDelete(idTodo, {
-      done: req.body.done,
-      title: req.body.title,
-    });
+    await Todo.findByIdAndDelete(idTodo);
 
     res.json({
       message: "Ok",
