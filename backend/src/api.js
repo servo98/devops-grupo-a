@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 import todoRouter from "./routes/todo.route.js";
+import paymentRouter from "./routes/payment.route.js";
+
 import { globalLogger } from "./utils/logger.js";
 import errorHandler from "./utils/errorHandler.js";
 // import morgan from "morgan";
@@ -26,6 +28,7 @@ api.get("/", (req, res) => {
 });
 
 api.use("/api/todos", todoRouter);
+api.use("/api/payments", paymentRouter);
 
 // Registrar error handler
 api.use(errorHandler);

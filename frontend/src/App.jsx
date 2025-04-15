@@ -1,53 +1,57 @@
-import { useEffect, useState } from "react";
-import TodoCreator from "./components/TodoCreator";
-import { TodoList } from "./components/TodoList";
+// import { useEffect, useState } from "react";
+// import TodoCreator from "./components/TodoCreator";
 
-import { getAllTodos } from "./services/todo.service";
+// import { TodoList } from "./components/TodoList";
+
+// import { getAllTodos } from "./services/todo.service";
+import Payment from "./components/Payment";
 function App() {
-  const [todos, setTodos] = useState([]);
+  // const [todos, setTodos] = useState([]);
 
-  useEffect(() => {
-    const getData = async () => {
-      const { error, message, todos } = await getAllTodos();
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const { error, message, todos } = await getAllTodos();
 
-      if (error) {
-        alert(message);
-      } else {
-        setTodos(todos);
-      }
-    };
+  //     if (error) {
+  //       alert(message);
+  //     } else {
+  //       setTodos(todos);
+  //     }
+  //   };
 
-    getData();
-  }, []);
+  //   getData();
+  // }, []);
 
-  const handleAdd = (newTodo) => {
-    setTodos([...todos, newTodo]);
-  };
+  // const handleAdd = (newTodo) => {
+  //   setTodos([...todos, newTodo]);
+  // };
 
-  const handleDelete = (idTodo) => {
-    const filtered = todos.filter((todo) => todo._id !== idTodo);
+  // const handleDelete = (idTodo) => {
+  //   const filtered = todos.filter((todo) => todo._id !== idTodo);
 
-    setTodos(filtered);
-  };
+  //   setTodos(filtered);
+  // };
 
-  const handleChangeDone = (idTodo, done) => {
-    const updatedTodos = [...todos].map((todo) => {
-      return todo._id === idTodo ? { ...todo, done } : todo;
-    });
+  // const handleChangeDone = (idTodo, done) => {
+  //   const updatedTodos = [...todos].map((todo) => {
+  //     return todo._id === idTodo ? { ...todo, done } : todo;
+  //   });
 
-    setTodos(updatedTodos);
-  };
+  //   setTodos(updatedTodos);
+  // };
 
   return (
     <>
-      <h1>Esto es una lista de cosas v4</h1>
+      {/* <h1>Esto es una lista de cosas v4</h1>
       <h2>esto es un subtítulo</h2>
       <TodoList
         todos={todos}
         handleDelete={handleDelete}
         handleChangeDone={handleChangeDone}
       />
-      <TodoCreator handleAdd={handleAdd} />
+      <TodoCreator handleAdd={handleAdd} /> */}
+
+      <Payment />
     </>
   );
 }
